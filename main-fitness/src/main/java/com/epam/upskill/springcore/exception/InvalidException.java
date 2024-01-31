@@ -1,4 +1,4 @@
-package com.epam.upskill.authenticationservice.exception;
+package com.epam.upskill.springcore.exception;
 
 /**
  * @description: InvalidException class for invalid data.

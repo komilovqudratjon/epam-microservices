@@ -1,7 +1,7 @@
-package com.epam.upskill.authenticationservice.controller;
+package com.epam.upskill.springcore.controller;
 
-import com.epam.upskill.authenticationservice.model.dtos.*;
-import com.epam.upskill.authenticationservice.service.TrainerService;
+import com.epam.upskill.springcore.model.dtos.*;
+import com.epam.upskill.springcore.service.TrainerService;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
-package com.epam.upskill.authenticationservice.repository;
+package com.epam.upskill.springcore.repository;
 
-import com.epam.upskill.authenticationservice.model.TrainingType;
+import com.epam.upskill.springcore.model.TrainingType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

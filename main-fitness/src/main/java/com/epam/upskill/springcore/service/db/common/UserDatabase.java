@@ -1,7 +1,7 @@
-package com.epam.upskill.authenticationservice.service.db.common;
+package com.epam.upskill.springcore.service.db.common;
 
-import com.epam.upskill.authenticationservice.model.Users;
-import com.epam.upskill.authenticationservice.repository.UserRepository;
+import com.epam.upskill.springcore.model.Users;
+import com.epam.upskill.springcore.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

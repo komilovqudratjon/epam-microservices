@@ -1,4 +1,4 @@
-package com.epam.upskill.authenticationservice.security;
+package com.epam.upskill.springcore.security;
 
 import java.lang.annotation.*;
 

@@ -1,4 +1,4 @@
-package com.epam.upskill.authenticationservice.exception;
+package com.epam.upskill.springcore.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.TransientPropertyValueException;

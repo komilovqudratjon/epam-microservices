@@ -1,13 +1,13 @@
-package com.epam.upskill.authenticationservice.component;
+package com.epam.upskill.springcore.component;
 
-import com.epam.upskill.authenticationservice.model.*;
-import com.epam.upskill.authenticationservice.model.Users;
-import com.epam.upskill.authenticationservice.repository.SpecializationRepository;
-import com.epam.upskill.authenticationservice.repository.TrainingTypeRepository;
-import com.epam.upskill.authenticationservice.repository.UserRepository;
-import com.epam.upskill.authenticationservice.service.db.common.TraineeDatabase;
-import com.epam.upskill.authenticationservice.service.db.common.TrainerDatabase;
-import com.epam.upskill.authenticationservice.service.db.common.TrainingDatabase;
+import com.epam.upskill.springcore.model.*;
+import com.epam.upskill.springcore.model.Users;
+import com.epam.upskill.springcore.repository.SpecializationRepository;
+import com.epam.upskill.springcore.repository.TrainingTypeRepository;
+import com.epam.upskill.springcore.repository.UserRepository;
+import com.epam.upskill.springcore.service.db.common.TraineeDatabase;
+import com.epam.upskill.springcore.service.db.common.TrainerDatabase;
+import com.epam.upskill.springcore.service.db.common.TrainingDatabase;
 import com.thedeanda.lorem.Lorem;
 import com.thedeanda.lorem.LoremIpsum;
 import lombok.RequiredArgsConstructor;

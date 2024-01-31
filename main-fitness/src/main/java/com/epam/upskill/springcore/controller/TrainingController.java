@@ -1,10 +1,10 @@
-package com.epam.upskill.authenticationservice.controller;
+package com.epam.upskill.springcore.controller;
 
-import com.epam.upskill.authenticationservice.model.TrainingType;
-import com.epam.upskill.authenticationservice.model.dtos.PageGeneral;
-import com.epam.upskill.authenticationservice.model.dtos.ResTrainingDTO;
-import com.epam.upskill.authenticationservice.model.dtos.TrainingDTO;
-import com.epam.upskill.authenticationservice.service.TrainingService;
+import com.epam.upskill.springcore.model.TrainingType;
+import com.epam.upskill.springcore.model.dtos.PageGeneral;
+import com.epam.upskill.springcore.model.dtos.ResTrainingDTO;
+import com.epam.upskill.springcore.model.dtos.TrainingDTO;
+import com.epam.upskill.springcore.service.TrainingService;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;

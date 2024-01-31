@@ -1,8 +1,8 @@
-package com.epam.upskill.authenticationservice.service.db.specifications;
+package com.epam.upskill.springcore.service.db.specifications;
 
-import com.epam.upskill.authenticationservice.model.Training;
-import com.epam.upskill.authenticationservice.model.TrainingType;
-import com.epam.upskill.authenticationservice.model.Users;
+import com.epam.upskill.springcore.model.Training;
+import com.epam.upskill.springcore.model.TrainingType;
+import com.epam.upskill.springcore.model.Users;
 import lombok.*;
 import org.springframework.data.jpa.domain.Specification;
 

@@ -1,4 +1,4 @@
-package com.epam.upskill.authenticationservice.model;
+package com.epam.upskill.springcore.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

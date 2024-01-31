@@ -1,4 +1,4 @@
-package com.epam.upskill.authenticationservice.model;
+package com.epam.upskill.springcore.model;
 
 /**
  * @description: Entity class for Trainee.

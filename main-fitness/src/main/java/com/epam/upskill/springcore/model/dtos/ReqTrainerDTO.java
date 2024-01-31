@@ -1,4 +1,4 @@
-package com.epam.upskill.authenticationservice.model.dtos;
+package com.epam.upskill.springcore.model.dtos;
 
 import io.swagger.annotations.ApiModelProperty;
 

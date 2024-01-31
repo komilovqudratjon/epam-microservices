@@ -1,6 +1,6 @@
-package com.epam.upskill.authenticationservice.repository;
+package com.epam.upskill.springcore.repository;
 
-import com.epam.upskill.authenticationservice.model.Trainee;
+import com.epam.upskill.springcore.model.Trainee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

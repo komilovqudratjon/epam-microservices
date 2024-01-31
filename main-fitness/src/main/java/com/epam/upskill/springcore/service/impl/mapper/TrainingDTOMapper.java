@@ -1,8 +1,8 @@
-package com.epam.upskill.authenticationservice.service.impl.mapper;
+package com.epam.upskill.springcore.service.impl.mapper;
 
 
-import com.epam.upskill.authenticationservice.model.Training;
-import com.epam.upskill.authenticationservice.model.dtos.TrainingDTO;
+import com.epam.upskill.springcore.model.Training;
+import com.epam.upskill.springcore.model.dtos.TrainingDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

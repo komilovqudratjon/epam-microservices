@@ -1,9 +1,9 @@
-package com.epam.upskill.authenticationservice.service;
+package com.epam.upskill.springcore.service;
 
-import com.epam.upskill.authenticationservice.model.TrainingType;
-import com.epam.upskill.authenticationservice.model.dtos.PageGeneral;
-import com.epam.upskill.authenticationservice.model.dtos.ResTrainingDTO;
-import com.epam.upskill.authenticationservice.model.dtos.TrainingDTO;
+import com.epam.upskill.springcore.model.TrainingType;
+import com.epam.upskill.springcore.model.dtos.PageGeneral;
+import com.epam.upskill.springcore.model.dtos.ResTrainingDTO;
+import com.epam.upskill.springcore.model.dtos.TrainingDTO;
 
 import java.util.Date;
 import java.util.List;

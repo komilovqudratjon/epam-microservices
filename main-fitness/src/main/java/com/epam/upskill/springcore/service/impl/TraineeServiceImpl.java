@@ -1,15 +1,15 @@
-package com.epam.upskill.authenticationservice.service.impl;
+package com.epam.upskill.springcore.service.impl;
 
-import com.epam.upskill.authenticationservice.model.RoleName;
-import com.epam.upskill.authenticationservice.model.Trainee;
-import com.epam.upskill.authenticationservice.model.Users;
-import com.epam.upskill.authenticationservice.model.dtos.*;
-import com.epam.upskill.authenticationservice.service.TraineeService;
-import com.epam.upskill.authenticationservice.service.UserService;
-import com.epam.upskill.authenticationservice.service.db.common.TraineeDatabase;
-import com.epam.upskill.authenticationservice.service.db.common.UserDatabase;
-import com.epam.upskill.authenticationservice.service.impl.mapper.TraineeDTOMapper;
-import com.epam.upskill.authenticationservice.service.impl.mapper.TrainerDTOMapper;
+import com.epam.upskill.springcore.model.RoleName;
+import com.epam.upskill.springcore.model.Trainee;
+import com.epam.upskill.springcore.model.Users;
+import com.epam.upskill.springcore.model.dtos.*;
+import com.epam.upskill.springcore.service.TraineeService;
+import com.epam.upskill.springcore.service.UserService;
+import com.epam.upskill.springcore.service.db.common.TraineeDatabase;
+import com.epam.upskill.springcore.service.db.common.UserDatabase;
+import com.epam.upskill.springcore.service.impl.mapper.TraineeDTOMapper;
+import com.epam.upskill.springcore.service.impl.mapper.TrainerDTOMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;

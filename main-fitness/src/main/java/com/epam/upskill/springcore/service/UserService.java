@@ -1,7 +1,7 @@
-package com.epam.upskill.authenticationservice.service;
+package com.epam.upskill.springcore.service;
 
-import com.epam.upskill.authenticationservice.model.Users;
-import com.epam.upskill.authenticationservice.model.dtos.*;
+import com.epam.upskill.springcore.model.Users;
+import com.epam.upskill.springcore.model.dtos.*;
 
 /**
  * @description: Service interface for Training entity.

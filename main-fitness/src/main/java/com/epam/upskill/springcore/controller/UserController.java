@@ -1,9 +1,9 @@
-package com.epam.upskill.authenticationservice.controller;
+package com.epam.upskill.springcore.controller;
 
-import com.epam.upskill.authenticationservice.model.Users;
-import com.epam.upskill.authenticationservice.model.dtos.UserDTO;
-import com.epam.upskill.authenticationservice.security.CurrentUser;
-import com.epam.upskill.authenticationservice.service.UserService;
+import com.epam.upskill.springcore.model.Users;
+import com.epam.upskill.springcore.model.dtos.UserDTO;
+import com.epam.upskill.springcore.security.CurrentUser;
+import com.epam.upskill.springcore.service.UserService;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

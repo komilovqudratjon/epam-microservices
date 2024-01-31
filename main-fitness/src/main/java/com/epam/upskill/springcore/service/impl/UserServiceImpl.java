@@ -1,12 +1,12 @@
-package com.epam.upskill.authenticationservice.service.impl;
+package com.epam.upskill.springcore.service.impl;
 
-import com.epam.upskill.authenticationservice.model.Users;
-import com.epam.upskill.authenticationservice.model.dtos.LoginResDTO;
-import com.epam.upskill.authenticationservice.model.dtos.RestUserDTO;
-import com.epam.upskill.authenticationservice.model.dtos.UserDTO;
-import com.epam.upskill.authenticationservice.service.UserService;
-import com.epam.upskill.authenticationservice.service.db.common.UserDatabase;
-import com.epam.upskill.authenticationservice.service.impl.mapper.UserDTOMapper;
+import com.epam.upskill.springcore.model.Users;
+import com.epam.upskill.springcore.model.dtos.LoginResDTO;
+import com.epam.upskill.springcore.model.dtos.RestUserDTO;
+import com.epam.upskill.springcore.model.dtos.UserDTO;
+import com.epam.upskill.springcore.service.UserService;
+import com.epam.upskill.springcore.service.db.common.UserDatabase;
+import com.epam.upskill.springcore.service.impl.mapper.UserDTOMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;

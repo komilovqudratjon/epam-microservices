@@ -1,8 +1,8 @@
-package com.epam.upskill.authenticationservice.service.impl.mapper;
+package com.epam.upskill.springcore.service.impl.mapper;
 
 
-import com.epam.upskill.authenticationservice.model.Specialization;
-import com.epam.upskill.authenticationservice.model.dtos.SpecializationDTO;
+import com.epam.upskill.springcore.model.Specialization;
+import com.epam.upskill.springcore.model.dtos.SpecializationDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;

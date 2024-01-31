@@ -1,4 +1,4 @@
-package com.epam.upskill.authenticationservice.config;
+package com.epam.upskill.springcore.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
