@@ -7,9 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="api-gateway" />
-        <module name="fitness-server" />
+        <module name="feign-clients" />
         <module name="config-server" />
+        <module name="main-fitness" />
+        <module name="authentication-service" />
+        <module name="api-gateway" />
+        <module name="workload" />
         <module name="eureka-server" />
       </profile>
     </annotationProcessing>
@@ -17,8 +20,11 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="" />
-      <module name="config-server" options="-parameters" />
-      <module name="fitness-server" options="" />
+      <module name="authentication-service" options="" />
+      <module name="config-server" options="" />
+      <module name="feign-clients" options="" />
+      <module name="main-fitness" options="" />
+      <module name="workload" options="" />
     </option>
   </component>
 </project>

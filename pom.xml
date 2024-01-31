@@ -13,7 +13,10 @@
         <module>config-server</module>
         <module>eureka-server</module>
         <module>api-gateway</module>
-        <module>fitness-server</module>
+        <module>workload</module>
+        <module>authentication-service</module>
+        <module>main-fitness</module>
+        <module>feign-clients</module>
     </modules>
 
 
@@ -27,6 +30,7 @@
         <spring.swagger.ui>2.9.2</spring.swagger.ui>
         <random.lorem>2.1</random.lorem>
         <jjwt.version>0.9.1</jjwt.version>
+        <jbcrypt.version>0.4</jbcrypt.version>
         <spring.cloud-version>2020.0.3</spring.cloud-version>
         <image>qudratjoncode/${project.artifactId}:${project.version}</image>
     </properties>
