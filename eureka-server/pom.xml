@@ -20,6 +20,7 @@
         </plugins>
     </build>
 
+
     <profiles>
         <profile>
             <id>build-docker-image</id>
