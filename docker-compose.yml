@@ -3,16 +3,27 @@ services:
     container_name: postgres
     image: postgres
     environment:
-      POSTGRES_USER: amigoscode
+      POSTGRES_USER: qudratjonkomilov
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
     ports:
-      - "5432:5432"
+      - "5433:5433"
     networks:
       - postgres
     restart: unless-stopped
+#    command: >
+#      bash -c "
+#      while ! pg_isready -q -h localhost -p 5433 -U qudratjonkomilov;
+#      do
+#        echo Waiting for database to start...
+#        sleep 2;
+#      done;
+#      psql -v ON_ERROR_STOP=1 --username qudratjonkomilov --dbname postgres -c 'CREATE DATABASE workload;';
+#      psql -v ON_ERROR_STOP=1 --username qudratjonkomilov --dbname postgres -c 'CREATE DATABASE gym;';
+#      psql -v ON_ERROR_STOP=1 --username qudratjonkomilov --dbname postgres -c 'CREATE DATABASE auth_db;'
+#      "
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
@@ -34,71 +45,68 @@ services:
       - "9411:9411"
     networks:
       - spring
-#  eureka-server:
-#    image: amigoscode/eureka-server:latest
-#    container_name: eureka-server
-#    ports:
-#      - "8761:8761"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#    depends_on:
+  eureka-server:
+    image: qudratjonkomilov/eureka-server:latest
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+    depends_on:
+      - zipkin
+  apigw:
+    image: qudratjonkomilov/apigw:latest
+    container_name: apigw
+    ports:
+      - "8083:8083"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+    depends_on:
 #      - zipkin
-#  apigw:
-#    image: amigoscode/apigw:latest
-#    container_name: apigw
-#    ports:
-#      - "8083:8083"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#    depends_on:
-#      - zipkin
-#      - eureka-server
-#  customer:
-#    image: amigoscode/customer:latest
-#    container_name: customer
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#    depends_on:
-#      - zipkin
-#      - postgres
-#      - rabbitmq
-#  fraud:
-#    image: amigoscode/fraud:latest
-#    container_name: fraud
-#    ports:
-#      - "8081:8081"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#    depends_on:
-#      - zipkin
-#      - postgres
-#      - rabbitmq
-#  notification:
-#    image: amigoscode/notification:latest
-#    container_name: notification
-#    ports:
-#      - "8082:8082"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#    depends_on:
-#      - zipkin
-#      - postgres
-#      - rabbitmq
+      - eureka-server
+  main-fitness:
+    image: qudratjonkomilov/main-fitness:latest
+    container_name: main-fitness
+    ports:
+      - "1111:1111"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - postgres
+  workload:
+    image: qudratjonkomilov/workload:latest
+    container_name: workload
+    ports:
+      - "5555:5555"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - postgres
+  authentication-service:
+    image: qudratjonkomilov/authentication-service:latest
+    container_name: authentication-service
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - postgres
 networks:
   postgres:
     driver: bridge
