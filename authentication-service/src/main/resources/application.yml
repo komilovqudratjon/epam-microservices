@@ -1,0 +1,50 @@
+spring:
+  datasource-user-session:
+    driver-class-name: org.postgresql.Driver
+    jdbc-url: jdbc:postgresql://localhost:5432/auth_db  # or demo, decide which one
+    username: 'postgres'
+    password: 'password'
+    platform: postgresql
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 10
+      minimum-idle: 5
+      pool-name: WriteHikariPool
+    jpa:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        ddl-auto: create
+      show-sql: true
+  datasource-user:
+    driver-class-name: org.postgresql.Driver
+    jdbc-url: jdbc:postgresql://localhost:5432/gym  # or 5433/demo, decide which one
+    username: 'postgres'
+    password: 'password'  # make sure this is correct
+    platform: postgresql
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 10
+      minimum-idle: 5
+      pool-name: ReadHikariPool
+    jpa:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        ddl-auto: create
+      show-sql: true
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: 'true'
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: 'true'
+app:
+  userBlockTimeInMs: '600000'
+  jwtExpirationInMsForRefreshToken: '8640000000'
+  jwtExpirationInMs: '1728000000'
+  jwtSecret: localSecretKey-1234567890-1234567890-1234567890-1234567890-1234567890-1234567890
+  jwtRefreshSecret: localSecretKey-1234567890-1234567890-1234567890-1234567890-1234567890-1234567890-16515356
+  userBlockCount: '3'
+server:
+  port: '8084'
