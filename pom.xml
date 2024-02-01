@@ -32,7 +32,7 @@
         <jjwt.version>0.9.1</jjwt.version>
         <jbcrypt.version>0.4</jbcrypt.version>
         <spring.cloud-version>2020.0.3</spring.cloud-version>
-        <image>qudratjoncode/${project.artifactId}:${project.version}</image>
+        <image>qudratjonkomilov/${project.artifactId}:${project.version}</image>
     </properties>
 
     <dependencyManagement>
@@ -70,7 +70,7 @@
     </dependencies>
 
     <build>
-        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+        <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
