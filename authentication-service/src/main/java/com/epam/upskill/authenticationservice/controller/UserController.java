@@ -51,6 +51,22 @@ public class UserController {
         return userService.changePassword(loginDTO, user);
     }
 
+    /**
+     * Retrieves the profile of the currently logged-in user.
+     * <p>
+     * This method calls the UserService to get the details of the current user.
+     *
+     * @return UserDTO containing the user's profile information
+     */
+    @GetMapping("/me")
+    @ResponseStatus(HttpStatus.OK)
+    @ApiImplicitParams({@ApiImplicitParam(name = "Authorization", value = "Access Token", paramType = "header", dataTypeClass = String.class, example = "Bearer access_token")})
+    @ApiOperation(value = "Get User Profile", notes = "Retrieves the profile of the currently logged-in user")
+    @ApiResponse(code = 200, message = "User profile retrieved successfully")
+    public UserDTO getMe(@ApiIgnore @CurrentUser Users user) {
+        return userService.getMe(user);
+    }
+
 
     /**
      * Authenticates a user with given credentials.
