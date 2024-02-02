@@ -1,6 +1,6 @@
 package com.epam.upskill.authenticationservice.controller;
 
-import com.epam.upskill.authenticationservice.model.user.Users;
+import com.epam.upskill.authenticationservice.model.Users;
 import com.epam.upskill.authenticationservice.model.dtos.*;
 import com.epam.upskill.authenticationservice.security.CurrentUser;
 import com.epam.upskill.authenticationservice.service.UserService;

@@ -1,6 +1,6 @@
 package com.epam.upskill.authenticationservice.service;
 
-import com.epam.upskill.authenticationservice.model.user.Users;
+import com.epam.upskill.authenticationservice.model.Users;
 import com.epam.upskill.authenticationservice.model.dtos.*;
 /**
  * @description: Service interface for Training entity.
@@ -15,7 +15,6 @@ public interface UserService {
 
     LoginResDTO changePassword(LoginDTO loginResDTO, Users user);
 
-    void activate(Long id);
 
     UserDTO getMe(Users user);
 

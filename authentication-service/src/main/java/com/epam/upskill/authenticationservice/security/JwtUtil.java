@@ -1,9 +1,9 @@
 package com.epam.upskill.authenticationservice.security;
 
-import com.epam.upskill.authenticationservice.model.userSession.UserSession;
-import com.epam.upskill.authenticationservice.model.user.Users;
+import com.epam.upskill.authenticationservice.model.UserSession;
+import com.epam.upskill.authenticationservice.model.Users;
 import com.epam.upskill.authenticationservice.model.dtos.JwtResponse;
-import com.epam.upskill.authenticationservice.repository.userSession.UserSessionRepository;
+import com.epam.upskill.authenticationservice.repository.UserSessionRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.util.Base64;
 import java.util.Date;
 import java.util.UUID;
 
@@ -70,7 +71,7 @@ public class JwtUtil {
                 .setId(sessionId)
                 .setIssuedAt(new Date())
                 .setExpiration(expiryDate)
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(SignatureAlgorithm.HS512, Base64.getEncoder().encodeToString(secret.getBytes()))
                 .compact();
     }
 
@@ -120,7 +121,7 @@ public class JwtUtil {
     }
 
     private Claims parseClaims(String token, String secret) {
-        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+        return Jwts.parser().setSigningKey(Base64.getEncoder().encodeToString(secret.getBytes())).parseClaimsJws(token).getBody();
     }
 
     private boolean validateToken(String authToken, String secret) {

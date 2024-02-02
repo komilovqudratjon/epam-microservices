@@ -1,7 +1,7 @@
 package com.epam.upskill.authenticationservice.service.impl.mapper;
 
 
-import com.epam.upskill.authenticationservice.model.user.Users;
+import com.epam.upskill.authenticationservice.model.Users;
 import com.epam.upskill.authenticationservice.model.dtos.UserDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

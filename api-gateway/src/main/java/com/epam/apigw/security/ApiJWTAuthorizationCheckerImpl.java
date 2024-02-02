@@ -12,10 +12,10 @@ public class ApiJWTAuthorizationCheckerImpl implements ApiJWTAuthorizationChecke
     private final ApiManagementClient apiManagementClient;
 
     @Override
-    public boolean isAuthorized(String tokenJWT, String applicationName) {
-        return apiManagementClient.isKeyAuthorizedForApplication(
+    public boolean isAuthorized(String tokenJWT, String path) {
+        return apiManagementClient.checkAuthorization(
                 tokenJWT,
-                applicationName
+                path
         ).isAuthorized();
     }
 

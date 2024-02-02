@@ -1,7 +1,5 @@
-package com.epam.upskill.authenticationservice.model.user;
+package com.epam.upskill.authenticationservice.model;
 
-import com.epam.upskill.authenticationservice.model.AbsEntity;
-import com.epam.upskill.authenticationservice.model.RoleName;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,7 +29,6 @@ import java.util.Date;
 public class Users extends AbsEntity implements UserDetails, Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "first_name", nullable = false)
@@ -55,7 +52,6 @@ public class Users extends AbsEntity implements UserDetails, Serializable {
     @Column(name = "address")
     private String address;
 
-
     @Enumerated(EnumType.STRING)
     private RoleName role = RoleName.ROLE_USER;
 
@@ -70,26 +66,32 @@ public class Users extends AbsEntity implements UserDetails, Serializable {
     private boolean credentialsNonExpired = true;
 
     private boolean enabled = true;
+
     @Override
     public String getUsername() {
         return this.username;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority(role.name()));
     }
+
     @Override
     public boolean isAccountNonExpired() {
         return this.accountNonExpired;
     }
+
     @Override
     public boolean isAccountNonLocked() {
         return this.accountNonLocked;
     }
+
     @Override
     public boolean isCredentialsNonExpired() {
         return this.credentialsNonExpired;
     }
+
     @Override
     public boolean isEnabled() {
         return this.enabled;

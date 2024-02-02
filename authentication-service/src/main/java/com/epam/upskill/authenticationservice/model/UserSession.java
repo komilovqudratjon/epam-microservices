@@ -1,8 +1,7 @@
-package com.epam.upskill.authenticationservice.model.userSession;
+package com.epam.upskill.authenticationservice.model;
 
 import com.epam.upskill.authenticationservice.model.AbsEntity;
 import com.epam.upskill.authenticationservice.model.RoleName;
-import com.epam.upskill.authenticationservice.model.user.Users;
 import lombok.*;
 
 import javax.persistence.*;
@@ -48,7 +47,7 @@ public class UserSession extends AbsEntity {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "username", nullable = false, unique = true)
+//    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @Enumerated(EnumType.STRING)

@@ -1,10 +1,11 @@
 package com.epam.upskill.authenticationservice.service.impl;
 
+import com.epam.upskill.authenticationservice.model.Users;
 import com.epam.upskill.authenticationservice.model.dtos.*;
-import com.epam.upskill.authenticationservice.model.user.Users;
 import com.epam.upskill.authenticationservice.security.JwtUtil;
 import com.epam.upskill.authenticationservice.service.UserService;
-import com.epam.upskill.authenticationservice.service.db.common.UserDatabase;
+import com.epam.upskill.authenticationservice.service.db.MainUserRepository;
+import com.epam.upskill.authenticationservice.service.db.UserDatabase;
 import com.epam.upskill.authenticationservice.service.impl.mapper.UserDTOMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
+
 /**
  * @description: Service class for managing Training entities.
  * @date: 08 November 2023 $
@@ -38,14 +40,13 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticate;
     private final JwtUtil jwtUtil;
+    private final MainUserRepository mainUserRepository;
 
     @Value("${app.userBlockTimeInMs}")
     private Integer timeBlocked;
 
     @Value("${app.userBlockCount}")
     private long numberOfAttempts;
-
-
 
 
     /**
@@ -74,30 +75,11 @@ public class UserServiceImpl implements UserService {
                 throw new SecurityException("Old password is incorrect");
             }
             Users users = byUsername.get();
-            users.setPassword(passwordEncoder.encode(loginResDTO.newPassword()));
+            String encode = passwordEncoder.encode(loginResDTO.newPassword());
+            users.setPassword(encode);
+            mainUserRepository.changePassword(loginResDTO.username(), encode);
             Users save = userDatabase.save(users);
             return new LoginResDTO(save.getId(), save.getUsername(), loginResDTO.newPassword());
-        }
-    }
-
-
-    /**
-     * Toggles the activation status of a user.
-     * <p>
-     * This method finds a user by their ID and toggles their active status.
-     *
-     * @param id The ID of the user whose active status needs to be toggled.
-     * @throws EntityNotFoundException if the user is not found.
-     */
-    @Override
-    public void activate(Long id) {
-        Optional<Users> byId = userDatabase.findById(id);
-        if (byId.isEmpty()) {
-            throw new EntityNotFoundException("User not found");
-        } else {
-            Users users = byId.get();
-            users.setIsActive(!users.getIsActive());
-            userDatabase.save(users);
         }
     }
 
@@ -176,11 +158,15 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public JwtResponse login(LoginResDTO loginResDTO) {
-        Optional<Users> byUsername = userDatabase.findByUsername(loginResDTO.username());
+        Optional<Users> byUsername = mainUserRepository.findByUsername(loginResDTO.username());
         if (byUsername.isEmpty()) {
             throw new EntityNotFoundException("Invalid username/password supplied");
         } else {
             Users users = byUsername.get();
+            Optional<Users> byUsername1 = userDatabase.findByUsername(users.getUsername());
+            if (byUsername1.isEmpty()) {
+                users = userDatabase.save(users);
+            }
             if (users.getBlockedEndDate() != null && users.getBlockedEndDate().after(new Date())) {
                 users.setCount(users.getCount() + 1);
                 users.setBlockedEndDate(new Date(users.getBlockedEndDate().getTime() + timeBlocked));
@@ -201,7 +187,6 @@ public class UserServiceImpl implements UserService {
                 userDatabase.save(users);
                 throw new SecurityException("Invalid username/password supplied");
             }
-
             return jwtUtil.getNewUserSession(users);
         }
     }

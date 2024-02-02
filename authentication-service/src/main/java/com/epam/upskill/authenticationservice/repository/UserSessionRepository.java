@@ -1,6 +1,6 @@
-package com.epam.upskill.authenticationservice.repository.userSession;
+package com.epam.upskill.authenticationservice.repository;
 
-import com.epam.upskill.authenticationservice.model.userSession.UserSession;
+import com.epam.upskill.authenticationservice.model.UserSession;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

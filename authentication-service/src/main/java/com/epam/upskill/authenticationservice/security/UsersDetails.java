@@ -1,6 +1,7 @@
 package com.epam.upskill.authenticationservice.security;
 
-import com.epam.upskill.authenticationservice.service.db.common.UserDatabase;
+import com.epam.upskill.authenticationservice.model.Users;
+import com.epam.upskill.authenticationservice.service.db.UserDatabase;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,8 +23,9 @@ public class UsersDetails implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userDatabase.findByUsername(username).orElseThrow(() ->
+        Users users = userDatabase.findByUsername(username).orElseThrow(() ->
                 new UsernameNotFoundException("User not found with username: " + username));
+        return users;
     }
 }
 
