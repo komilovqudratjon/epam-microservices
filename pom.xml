@@ -10,7 +10,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>config-server</module>
         <module>eureka-server</module>
         <module>api-gateway</module>
         <module>workload</module>

@@ -8,9 +8,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients(basePackages = "com.epam.upskill.feignclients")
-public class SpringCoreTaskApplication {
+public class MainFitness {
     public static void main(String[] args) {
-        SpringApplication.run(SpringCoreTaskApplication.class, args);
+        SpringApplication.run(MainFitness.class, args);
     }
 
 }
