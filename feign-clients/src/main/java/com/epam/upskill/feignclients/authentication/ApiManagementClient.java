@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
-        name = "api-management",
-        url = "${clients.authentication.url}"
+        name = "authentication-service",
+        url = "http://localhost:8084"
 )
 @Service
 public interface ApiManagementClient {

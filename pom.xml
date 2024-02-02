@@ -23,14 +23,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <spring.boot.maven.plugin.version>2.5.7</spring.boot.maven.plugin.version>
-        <spring.boot.dependencies.version>2.5.7</spring.boot.dependencies.version>
+        <spring.boot.maven.plugin.version>2.7.8</spring.boot.maven.plugin.version>
+        <spring.boot.dependencies.version>2.7.8</spring.boot.dependencies.version>
         <spring.swagger2>2.9.2</spring.swagger2>
         <spring.swagger.ui>2.9.2</spring.swagger.ui>
         <random.lorem>2.1</random.lorem>
         <jjwt.version>0.9.1</jjwt.version>
         <jbcrypt.version>0.4</jbcrypt.version>
-        <spring.cloud-version>2020.0.3</spring.cloud-version>
+        <spring.cloud-version>2021.0.2</spring.cloud-version>
         <image>qudratjonkomilov/${project.artifactId}:${project.version}</image>
     </properties>
 

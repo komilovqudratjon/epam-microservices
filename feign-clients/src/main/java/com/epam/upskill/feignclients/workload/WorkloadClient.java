@@ -16,7 +16,7 @@ import java.util.Date;
  * @author: Qudratjon Komilov
  */
 
-@FeignClient(name = "workload", url = "${clients.workload.url}")
+@FeignClient(name = "workload", url = "http://localhost:5555")
 public interface WorkloadClient {
 
     @PostMapping(path = "/workload/v1/workloads")

@@ -38,17 +38,17 @@ public class ApiAuthorizationFilter
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        List<String> apiKeyHeader = exchange.getRequest().getHeaders().get("Authorization");
-        Route route = exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR);
-        String path = exchange.getRequest().getPath().value();
-
-        if (openEndpoints.stream().anyMatch(p -> pathMatcher.match(p, path))) {
-            return chain.filter(exchange);
-        }
-
-        if (isEmpty(apiKeyHeader) || !apiJWTAuthorizationChecker.isAuthorized(apiKeyHeader.get(0), Objects.requireNonNull(route).getUri().getHost())) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You're not authorized to access this API");
-        }
+//        List<String> apiKeyHeader = exchange.getRequest().getHeaders().get("Authorization");
+//        Route route = exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR);
+//        String path = exchange.getRequest().getPath().value();
+//
+//        if (openEndpoints.stream().anyMatch(p -> pathMatcher.match(p, path))) {
+//            return chain.filter(exchange);
+//        }
+//
+//        if (isEmpty(apiKeyHeader) || !apiJWTAuthorizationChecker.isAuthorized(apiKeyHeader.get(0), Objects.requireNonNull(route).getUri().getHost())) {
+//            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You're not authorized to access this API");
+//        }
 
         return chain.filter(exchange);
     }

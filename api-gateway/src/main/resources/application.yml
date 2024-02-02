@@ -31,6 +31,11 @@ spring:
           predicates:
             - Path=/workload/**
 
+        - id: authentication-service
+          uri: lb://AUTHENTICATION-SERVICE
+          predicates:
+            - Path=/auth/**
+
 eureka:
   client:
     service-url:
