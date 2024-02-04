@@ -31,7 +31,7 @@ public class ApiAuthorizationFilter
         this.apiJWTAuthorizationChecker = apiJWTAuthorizationChecker;
         this.pathMatcher = pathMatcher;
         this.openEndpoints = Set.of(
-                "/fitness/v1/trainings/types",
+//                "/fitness/v1/trainings/types",
                 "/fitness/swagger-ui/**",
                 "/fitness/v3/api-docs",
                 "/fitness/v3/api-docs/**",
@@ -45,13 +45,19 @@ public class ApiAuthorizationFilter
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        List<String> apiKeyHeader = exchange.getRequest().getHeaders().get("Authorization");
         String path = exchange.getRequest().getPath().value();
 
         if (openEndpoints.stream().anyMatch(p -> pathMatcher.match(p, path))) {
             return chain.filter(exchange);
         }
-        if (!isEmpty(apiKeyHeader) && !apiJWTAuthorizationChecker.isAuthorized(apiKeyHeader.get(0), path)) {
+
+        List<String> apiKeyHeader = null;
+        if (exchange.getRequest().getHeaders().containsKey("Authorization")) {
+            apiKeyHeader = exchange.getRequest().getHeaders().get("Authorization");
+        }
+
+        boolean authorized = apiJWTAuthorizationChecker.isAuthorized(apiKeyHeader.get(0), path);
+        if (!isEmpty(apiKeyHeader) && !authorized) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You're not authorized to access this API");
         }
 

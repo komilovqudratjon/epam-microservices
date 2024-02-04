@@ -56,7 +56,7 @@ public class CheckAuthServiceImpl implements CheckAuthService {
 
 
         openEndpoints = Set.of(
-                "/fitness/v1/trainings/types",
+//                "/fitness/v1/trainings/types",
                 "/fitness/swagger-ui/**",
                 "/fitness/v3/api-docs",
                 "/fitness/v3/api-docs/**",

@@ -1,8 +1,11 @@
 package com.epam.upskill.feignclients.authentication;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ApiManagementResponse {
-    private final boolean isAuthorized;
+    private boolean isAuthorized;
 }

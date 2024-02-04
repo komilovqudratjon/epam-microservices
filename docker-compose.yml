@@ -13,17 +13,17 @@ services:
     networks:
       - postgres
     restart: unless-stopped
-    command: >
-      bash -c "
-      while ! pg_isready -q -h localhost -p 5433 -U qudratjonkomilov;
-      do
-        echo Waiting for database to start...
-        sleep 2;
-      done;
-      psql -v ON_ERROR_STOP=1 --username qudratjonkomilov --dbname postgres -c 'CREATE DATABASE workload;';
-      psql -v ON_ERROR_STOP=1 --username qudratjonkomilov --dbname postgres -c 'CREATE DATABASE gym;';
-      psql -v ON_ERROR_STOP=1 --username qudratjonkomilov --dbname postgres -c 'CREATE DATABASE auth_db;'
-      "
+#    command: >
+#      bash -c "
+#      while ! pg_isready -q -h localhost -p 5433 -U qudratjonkomilov;
+#      do
+#        echo Waiting for database to start...
+#        sleep 2;
+#      done;
+#      psql -v ON_ERROR_STOP=1 --username qudratjonkomilov --dbname postgres -c 'CREATE DATABASE workload;';
+#      psql -v ON_ERROR_STOP=1 --username qudratjonkomilov --dbname postgres -c 'CREATE DATABASE gym;';
+#      psql -v ON_ERROR_STOP=1 --username qudratjonkomilov --dbname postgres -c 'CREATE DATABASE auth_db;'
+#      "
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
