@@ -12,6 +12,8 @@
         <option value="$PROJECT_DIR$/authentication-service/pom.xml" />
         <option value="$PROJECT_DIR$/main-fitness/pom.xml" />
         <option value="$PROJECT_DIR$/feign-clients/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbit-mq/pom.xml" />
+        <option value="$PROJECT_DIR$/mq/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

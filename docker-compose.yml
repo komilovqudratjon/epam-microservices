@@ -24,6 +24,14 @@ services:
 #      psql -v ON_ERROR_STOP=1 --username qudratjonkomilov --dbname postgres -c 'CREATE DATABASE gym;';
 #      psql -v ON_ERROR_STOP=1 --username qudratjonkomilov --dbname postgres -c 'CREATE DATABASE auth_db;'
 #      "
+  rabbitmq:
+    image: rabbitmq:3.9.11-management-alpine
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - spring
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4

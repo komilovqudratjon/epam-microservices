@@ -13,6 +13,8 @@
     <file url="file://$PROJECT_DIR$/feign-clients/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main-fitness/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main-fitness/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/workload/src/main/java" charset="UTF-8" />

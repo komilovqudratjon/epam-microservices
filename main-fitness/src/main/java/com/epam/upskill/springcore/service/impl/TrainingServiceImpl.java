@@ -2,6 +2,7 @@ package com.epam.upskill.springcore.service.impl;
 
 import com.epam.upskill.feignclients.workload.ResWorkloadDTO;
 import com.epam.upskill.feignclients.workload.WorkloadClient;
+import com.epam.upskill.rabbitmq.RabbitMQMessageProducer;
 import com.epam.upskill.springcore.model.Trainer;
 import com.epam.upskill.springcore.model.Training;
 import com.epam.upskill.springcore.model.TrainingType;
@@ -16,6 +17,7 @@ import com.epam.upskill.springcore.service.db.common.TrainingDatabase;
 import com.epam.upskill.springcore.service.impl.mapper.TrainingDTOMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +33,7 @@ import java.util.List;
  */
 
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 @Slf4j
 public class TrainingServiceImpl implements TrainingService {
 
@@ -41,6 +43,24 @@ public class TrainingServiceImpl implements TrainingService {
     private final TraineeDatabase traineeRepository;
     private final TrainingTypeRepository trainingTypeRepository;
     private final WorkloadClient workloadClient;
+    private final RabbitMQMessageProducer rabbitMQMessageProducer;
+
+    @Value("${rabbitmq.exchanges.internal}")
+    private String internalExchange;
+
+    @Value("${rabbitmq.routing-keys.internal-workload}")
+    private String internalNotificationRoutingKey;
+
+    public TrainingServiceImpl(TrainingDatabase trainingRepository, TrainingDTOMapper trainingDTOMapper, TrainerDatabase trainerRepository, TraineeDatabase traineeRepository, TrainingTypeRepository trainingTypeRepository, WorkloadClient workloadClient, RabbitMQMessageProducer rabbitMQMessageProducer) {
+        this.trainingRepository = trainingRepository;
+        this.trainingDTOMapper = trainingDTOMapper;
+        this.trainerRepository = trainerRepository;
+        this.traineeRepository = traineeRepository;
+        this.trainingTypeRepository = trainingTypeRepository;
+        this.workloadClient = workloadClient;
+        this.rabbitMQMessageProducer = rabbitMQMessageProducer;
+    }
+
 
     /**
      * Creates or updates a training record based on the provided ResTrainingDTO.
@@ -70,6 +90,7 @@ public class TrainingServiceImpl implements TrainingService {
         TrainingDTO apply = trainingDTOMapper.apply(trainingRepository.save(trainer));
 
         ResWorkloadDTO resWorkloadDTO = new ResWorkloadDTO(
+                training.id(),
                 training.trainerUsername(),
                 byUserUsername.getUser().getFirstName(),
                 byUserUsername.getUser().getLastName(),
@@ -79,7 +100,12 @@ public class TrainingServiceImpl implements TrainingService {
                 "ADD"
         );
 
-        workloadClient.createOrUpdate(resWorkloadDTO, training.id());
+//        workloadClient.createOrUpdate(resWorkloadDTO, training.id());
+        rabbitMQMessageProducer.publish(
+                resWorkloadDTO,
+                internalExchange,
+                internalNotificationRoutingKey
+        );
 
         log.info("Trainer created or updated successfully: {}", apply);
         return apply;

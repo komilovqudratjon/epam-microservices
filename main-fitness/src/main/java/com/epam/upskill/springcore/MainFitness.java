@@ -5,7 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@SpringBootApplication
+@SpringBootApplication(
+        scanBasePackages = {"com.epam.upskill.springcore", "com.epam.upskill.rabbitmq"}
+)
 @EnableEurekaClient
 @EnableFeignClients(basePackages = "com.epam.upskill.feignclients")
 public class MainFitness {

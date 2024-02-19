@@ -31,11 +31,11 @@ public class ApiAuthorizationFilter
         this.apiJWTAuthorizationChecker = apiJWTAuthorizationChecker;
         this.pathMatcher = pathMatcher;
         this.openEndpoints = Set.of(
-//                "/fitness/v1/trainings/types",
+                "/fitness/v1/trainings/types",
                 "/fitness/swagger-ui/**",
                 "/fitness/v3/api-docs",
                 "/fitness/v3/api-docs/**",
-                "/fitness/swagger-ui.html/**",
+                "/fitness/swagger-ui.html",
                 "/workload/swagger-ui/**",
                 "/workload/v3/api-docs",
                 "/workload/v3/api-docs/**",
@@ -56,8 +56,7 @@ public class ApiAuthorizationFilter
             apiKeyHeader = exchange.getRequest().getHeaders().get("Authorization");
         }
 
-        boolean authorized = apiJWTAuthorizationChecker.isAuthorized(apiKeyHeader.get(0), path);
-        if (!isEmpty(apiKeyHeader) && !authorized) {
+        if (!isEmpty(apiKeyHeader) && ! apiJWTAuthorizationChecker.isAuthorized(apiKeyHeader.get(0), path)) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You're not authorized to access this API");
         }
 

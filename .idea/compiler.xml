@@ -8,10 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="feign-clients" />
-        <module name="api-gateway" />
         <module name="main-fitness" />
-        <module name="workload" />
         <module name="authentication-service" />
+        <module name="mq" />
+        <module name="api-gateway" />
+        <module name="workload" />
         <module name="eureka-server" />
       </profile>
     </annotationProcessing>
@@ -26,6 +27,7 @@
       <module name="config-server" options="" />
       <module name="feign-clients" options="" />
       <module name="main-fitness" options="" />
+      <module name="mq" options="" />
       <module name="workload" options="" />
     </option>
   </component>

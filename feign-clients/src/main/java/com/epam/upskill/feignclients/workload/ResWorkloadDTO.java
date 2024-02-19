@@ -13,6 +13,7 @@ package com.epam.upskill.feignclients.workload;
 import java.util.Date;
 
 public record ResWorkloadDTO(
+        Long id,
 //        @NotNull(message = "Trainer Username should not be null")
 //        @NotBlank(message = "Trainer Username should not be blank")
         String trainerUsername,

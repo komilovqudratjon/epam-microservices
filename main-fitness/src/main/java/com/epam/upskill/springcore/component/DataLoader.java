@@ -145,7 +145,7 @@ public class DataLoader implements CommandLineRunner {
         user.setFirstName("Qudratjon");
         user.setLastName("Komilov");
         user.setUsername("koinot_admin");
-//        user.setPassword(passwordEncoder.encode("koinot"));
+        user.setPassword(passwordEncoder.encode("koinot"));
         user.setIsActive(true);
         user.setRole(RoleName.ROLE_ADMIN);
 

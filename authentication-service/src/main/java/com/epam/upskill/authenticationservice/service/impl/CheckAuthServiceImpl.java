@@ -82,7 +82,7 @@ public class CheckAuthServiceImpl implements CheckAuthService {
             }
             String s = tokenProvider.parseJwt(token);
             if (tokenProvider.validateAccessToken(s)) {
-                String username = tokenProvider.getUsernameFromJWT(token);
+                String username = tokenProvider.getUsernameFromJWT(s);
                 Users userDetails = userDatabase.findByUsername(username).orElseThrow(() ->
                         new UsernameNotFoundException("User not found with username: " + username));
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
