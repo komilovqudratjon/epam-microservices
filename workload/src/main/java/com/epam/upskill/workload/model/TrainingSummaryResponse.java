@@ -1,4 +1,4 @@
-package com.epam.upskill.feignclients.workload;
+package com.epam.upskill.workload.model;
 
 import lombok.*;
 

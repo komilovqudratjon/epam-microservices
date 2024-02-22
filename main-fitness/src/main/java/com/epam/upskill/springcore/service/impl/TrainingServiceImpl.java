@@ -1,7 +1,6 @@
 package com.epam.upskill.springcore.service.impl;
 
 import com.epam.upskill.feignclients.workload.ResWorkloadDTO;
-import com.epam.upskill.feignclients.workload.WorkloadClient;
 import com.epam.upskill.rabbitmq.RabbitMQMessageProducer;
 import com.epam.upskill.springcore.model.Trainer;
 import com.epam.upskill.springcore.model.Training;
@@ -15,7 +14,6 @@ import com.epam.upskill.springcore.service.db.common.TraineeDatabase;
 import com.epam.upskill.springcore.service.db.common.TrainerDatabase;
 import com.epam.upskill.springcore.service.db.common.TrainingDatabase;
 import com.epam.upskill.springcore.service.impl.mapper.TrainingDTOMapper;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -42,7 +40,7 @@ public class TrainingServiceImpl implements TrainingService {
     private final TrainerDatabase trainerRepository;
     private final TraineeDatabase traineeRepository;
     private final TrainingTypeRepository trainingTypeRepository;
-    private final WorkloadClient workloadClient;
+    //    private final WorkloadClient workloadClient;
     private final RabbitMQMessageProducer rabbitMQMessageProducer;
 
     @Value("${rabbitmq.exchanges.internal}")
@@ -51,13 +49,12 @@ public class TrainingServiceImpl implements TrainingService {
     @Value("${rabbitmq.routing-keys.internal-workload}")
     private String internalNotificationRoutingKey;
 
-    public TrainingServiceImpl(TrainingDatabase trainingRepository, TrainingDTOMapper trainingDTOMapper, TrainerDatabase trainerRepository, TraineeDatabase traineeRepository, TrainingTypeRepository trainingTypeRepository, WorkloadClient workloadClient, RabbitMQMessageProducer rabbitMQMessageProducer) {
+    public TrainingServiceImpl(TrainingDatabase trainingRepository, TrainingDTOMapper trainingDTOMapper, TrainerDatabase trainerRepository, TraineeDatabase traineeRepository, TrainingTypeRepository trainingTypeRepository, RabbitMQMessageProducer rabbitMQMessageProducer) {
         this.trainingRepository = trainingRepository;
         this.trainingDTOMapper = trainingDTOMapper;
         this.trainerRepository = trainerRepository;
         this.traineeRepository = traineeRepository;
         this.trainingTypeRepository = trainingTypeRepository;
-        this.workloadClient = workloadClient;
         this.rabbitMQMessageProducer = rabbitMQMessageProducer;
     }
 

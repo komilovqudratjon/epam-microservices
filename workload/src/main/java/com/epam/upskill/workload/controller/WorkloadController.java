@@ -2,7 +2,7 @@ package com.epam.upskill.workload.controller;
 
 
 import com.epam.upskill.feignclients.workload.ResWorkloadDTO;
-import com.epam.upskill.feignclients.workload.TrainingSummaryResponse;
+import com.epam.upskill.workload.model.TrainingSummaryResponse;
 import com.epam.upskill.workload.service.WorkloadService;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
@@ -67,9 +67,9 @@ public class WorkloadController {
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Successfully calculated the monthly summary of the Workload")})
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/summary")
-    public TrainingSummaryResponse getTrainingSummary(@RequestParam String trainerUsername,
-                                                      @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS") Date startDate,
-                                                      @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS") Date endDate) {
+    public TrainingSummaryResponse getTrainingSummary(@ApiParam(value = "The username of the trainer.", defaultValue = "JohnDoe") @RequestParam String trainerUsername,
+                                                      @ApiParam(value = "The start date of the summary in 'yyyy-MM-dd HH:mm:ss.SSS' format.", defaultValue = "2023-01-01 00:00:00.000") @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS") Date startDate,
+                                                      @ApiParam(value = "The end date of the summary in 'yyyy-MM-dd HH:mm:ss.SSS' format.", defaultValue = "2023-01-31 23:59:59.999") @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS") Date endDate) {
         return workloadService.calculateMonthlySummary(trainerUsername, startDate, endDate);
     }
 

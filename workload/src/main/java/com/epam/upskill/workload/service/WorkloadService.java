@@ -1,7 +1,7 @@
 package com.epam.upskill.workload.service;
 
 import com.epam.upskill.feignclients.workload.ResWorkloadDTO;
-import com.epam.upskill.feignclients.workload.TrainingSummaryResponse;
+import com.epam.upskill.workload.model.TrainingSummaryResponse;
 import com.epam.upskill.workload.model.Workload;
 
 import java.util.Date;

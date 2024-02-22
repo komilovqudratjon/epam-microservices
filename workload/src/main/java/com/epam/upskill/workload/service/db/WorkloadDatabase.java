@@ -1,7 +1,7 @@
 package com.epam.upskill.workload.service.db;
 
 
-import com.epam.upskill.feignclients.workload.TrainingSummaryResponse;
+import com.epam.upskill.workload.model.TrainingSummaryResponse;
 import com.epam.upskill.workload.model.Workload;
 import com.epam.upskill.workload.repository.WorkloadRepository;
 import lombok.AllArgsConstructor;

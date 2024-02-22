@@ -1,6 +1,6 @@
 package com.epam.upskill.workload.repository;
 
-import com.epam.upskill.feignclients.workload.TrainingSummaryResponse;
+import com.epam.upskill.workload.model.TrainingSummaryResponse;
 import com.epam.upskill.workload.model.Workload;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,9 +16,9 @@ import java.util.Date;
  */
 
 public interface WorkloadRepository extends JpaRepository<Workload, Long> {
-    @Query("SELECT new com.epam.upskill.feignclients.workload.TrainingSummaryResponse(" +
+    @Query("SELECT new com.epam.upskill.workload.model.TrainingSummaryResponse(" +
             "w.trainerUsername, w.trainerFirstName, w.trainerLastName, w.isActive, " +
-            "CAST(SUM(w.trainingDuration) AS integer)) " + // Explicit cast to Integer
+            "CAST(SUM(w.trainingDuration) AS integer)) " +
             "FROM Workload w " +
             "WHERE w.trainerUsername = :trainerUsername AND " +
             "w.trainingDate BETWEEN :startDate AND :endDate " +

@@ -1,7 +1,7 @@
 package com.epam.upskill.workload.service.impl;
 
 import com.epam.upskill.feignclients.workload.ResWorkloadDTO;
-import com.epam.upskill.feignclients.workload.TrainingSummaryResponse;
+import com.epam.upskill.workload.model.TrainingSummaryResponse;
 import com.epam.upskill.workload.model.Workload;
 import com.epam.upskill.workload.service.WorkloadService;
 import com.epam.upskill.workload.service.db.WorkloadDatabase;
