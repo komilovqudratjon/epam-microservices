@@ -35,6 +35,17 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * InvalidException class for invalid
+     */
+    @ExceptionHandler(InvalidException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidException(InvalidException e) {
+        log.error("InvalidException: ", e);
+        ErrorResponse errorResponse = new ErrorResponse("Invalid data: " + e.getMessage(), System.currentTimeMillis());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
+
+    /**
      * Handles generic Exceptions.
      *
      * @param e the caught Exception.

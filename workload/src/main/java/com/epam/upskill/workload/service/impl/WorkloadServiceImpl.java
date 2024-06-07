@@ -1,8 +1,10 @@
 package com.epam.upskill.workload.service.impl;
 
 import com.epam.upskill.feignclients.workload.ResWorkloadDTO;
+import com.epam.upskill.workload.model.MonthSummary;
 import com.epam.upskill.workload.model.TrainingSummaryResponse;
 import com.epam.upskill.workload.model.Workload;
+import com.epam.upskill.workload.model.YearSummary;
 import com.epam.upskill.workload.service.WorkloadService;
 import com.epam.upskill.workload.service.db.WorkloadDatabase;
 import lombok.AllArgsConstructor;
@@ -10,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.Date;
+import java.util.*;
 
 /**
  * @description: Service class for managing Workload entities.
@@ -67,7 +69,48 @@ public class WorkloadServiceImpl implements WorkloadService {
 
     @Override
     public TrainingSummaryResponse calculateMonthlySummary(String username, Date startDate, Date endDate) {
-        return workloadRepository.findByTrainerUsernameAndTrainingDateBetween(username, startDate, endDate);
+        List<Workload> workloads = workloadRepository.findByTrainerUsernameAndTrainingDateBetween(username, startDate, endDate);
+
+        TrainingSummaryResponse summary = new TrainingSummaryResponse();
+        summary.setTrainerUsername(username);
+        summary.setTrainerFirstName(workloads.get(0).getTrainerFirstName());
+        summary.setTrainerLastName(workloads.get(0).getTrainerLastName());
+        summary.setTrainerStatus(workloads.get(0).getIsActive());
+
+        List<YearSummary> yearSummaries = new ArrayList<>();
+
+        Map<Integer, Map<Integer, Integer>> yearlyMonthlyDurations = new HashMap<>();
+
+        for (Workload workload : workloads) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(workload.getTrainingDate());
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH) + 1; // Calendar.MONTH is zero-based
+
+            yearlyMonthlyDurations
+                    .computeIfAbsent(year, y -> new HashMap<>())
+                    .merge(month, workload.getTrainingDuration(), Integer::sum);
+        }
+
+        for (Map.Entry<Integer, Map<Integer, Integer>> yearEntry : yearlyMonthlyDurations.entrySet()) {
+            YearSummary yearSummary = new YearSummary();
+            yearSummary.setYear(yearEntry.getKey());
+
+            List<MonthSummary> monthSummaries = new ArrayList<>();
+            for (Map.Entry<Integer, Integer> monthEntry : yearEntry.getValue().entrySet()) {
+                MonthSummary monthSummary = new MonthSummary();
+                monthSummary.setMonth(monthEntry.getKey());
+                monthSummary.setTrainingSummaryDuration(monthEntry.getValue());
+                monthSummaries.add(monthSummary);
+            }
+            yearSummary.setMonths(monthSummaries);
+            yearSummaries.add(yearSummary);
+        }
+
+        summary.setYearSummaries(yearSummaries);
+
+
+        return summary;
     }
 
 

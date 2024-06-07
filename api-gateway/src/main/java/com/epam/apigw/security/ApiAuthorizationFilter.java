@@ -18,12 +18,10 @@ import java.util.Set;
 import static org.springframework.util.CollectionUtils.isEmpty;
 
 @Component
-public class ApiAuthorizationFilter
-        implements GlobalFilter, Ordered {
+public class ApiAuthorizationFilter implements GlobalFilter, Ordered {
 
     private final ApiJWTAuthorizationChecker apiJWTAuthorizationChecker;
     private final AntPathMatcher pathMatcher;
-
     private final Set<String> openEndpoints;
 
 
@@ -52,6 +50,7 @@ public class ApiAuthorizationFilter
         }
 
         List<String> apiKeyHeader = null;
+
         if (exchange.getRequest().getHeaders().containsKey("Authorization")) {
             apiKeyHeader = exchange.getRequest().getHeaders().get("Authorization");
         }
@@ -59,7 +58,6 @@ public class ApiAuthorizationFilter
         if (!isEmpty(apiKeyHeader) && ! apiJWTAuthorizationChecker.isAuthorized(apiKeyHeader.get(0), path)) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You're not authorized to access this API");
         }
-
 
         return chain.filter(exchange);
     }

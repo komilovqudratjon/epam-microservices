@@ -17,6 +17,7 @@
         <module>main-fitness</module>
         <module>feign-clients</module>
         <module>mq</module>
+        <module>workload-mongo</module>
     </modules>
 
     <properties>

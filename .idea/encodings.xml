@@ -17,6 +17,8 @@
     <file url="file://$PROJECT_DIR$/mq/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/workload-mongo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/workload-mongo/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/workload/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/workload/src/main/resources" charset="UTF-8" />
   </component>

@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @description: Service class for managing Workload entities.
@@ -84,9 +85,9 @@ public class WorkloadDatabase {
     /**
      * calculates workload summary duration findByTrainerUsernameAndTrainingDateBetween
      **/
-    public TrainingSummaryResponse findByTrainerUsernameAndTrainingDateBetween(String trainerUsername, Date startDate, Date endDate) {
+    public List<Workload> findByTrainerUsernameAndTrainingDateBetween(String trainerUsername, Date startDate, Date endDate) {
         log.info("Finding a Workload entity by its ID: {},  and: {} , date: {}", trainerUsername, startDate, endDate);
-        TrainingSummaryResponse foundEntity = workloadRepository.findByTrainerUsernameAndTrainingDateBetween(trainerUsername, startDate, endDate);
+        List<Workload> foundEntity = workloadRepository.findByTrainerUsernameAndTrainingDateBetween(trainerUsername, startDate, endDate);
         log.info("Workload found by ID: {}", foundEntity);
         return foundEntity;
     }

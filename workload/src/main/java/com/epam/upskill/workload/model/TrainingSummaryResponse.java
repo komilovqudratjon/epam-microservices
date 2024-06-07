@@ -2,6 +2,8 @@ package com.epam.upskill.workload.model;
 
 import lombok.*;
 
+import java.util.List;
+
 /**
  * @className: SpecializationRecord  $
  * @description: TODO
@@ -19,7 +21,7 @@ public class TrainingSummaryResponse {
     private String trainerFirstName;
     private String trainerLastName;
     private Boolean trainerStatus;
-    private Integer totalTrainingDuration;
+    private List<YearSummary> yearSummaries;
 }
 
 

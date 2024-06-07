@@ -9,10 +9,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="feign-clients" />
         <module name="main-fitness" />
+        <module name="apigw" />
         <module name="authentication-service" />
         <module name="mq" />
         <module name="api-gateway" />
         <module name="workload" />
+        <module name="workload-mongo" />
         <module name="eureka-server" />
       </profile>
     </annotationProcessing>
